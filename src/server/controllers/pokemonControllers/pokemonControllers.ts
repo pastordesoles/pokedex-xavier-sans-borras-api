@@ -34,8 +34,8 @@ export const addOneFavourite = async (
   const receivedFavourite = req.body as FavouriteStructure;
 
   try {
-    const doc = await Favourite.findOne(receivedFavourite).exec();
-    if (doc) {
+    const duplicatedPokemon = await Favourite.findOne(receivedFavourite).exec();
+    if (duplicatedPokemon) {
       res.status(400).json({ message: "Pokemon already present in the list" });
       return;
     }
@@ -45,7 +45,7 @@ export const addOneFavourite = async (
     });
 
     res.status(201).json({
-      session: {
+      pokemon: {
         ...newFavourite.toJSON(),
       },
     });
