@@ -12,4 +12,5 @@ const favouriteSchema = new Schema({
 
 export type FavouriteStructure = InferSchemaType<typeof favouriteSchema>;
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const Favourite = model("Favourite", favouriteSchema, "favourites");
