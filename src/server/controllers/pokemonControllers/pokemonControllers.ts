@@ -3,6 +3,10 @@ import CustomError from "../../../CustomError/CustomError.js";
 import type { CustomRequest } from "./types";
 import type { FavouriteStructure } from "../../../database/models/Favourites.js";
 import { Favourite } from "../../../database/models/Favourites.js";
+import errorsMessageSet from "../../../CustomError/errorsMessageSet.js";
+
+const { code404, code500, cantRetrieveFavourite, errorDeletingFavourite } =
+  errorsMessageSet;
 
 export const getAllPokemon = async (
   req: CustomRequest,
@@ -15,8 +19,8 @@ export const getAllPokemon = async (
   } catch (error: unknown) {
     const mongooseError = new CustomError(
       (error as Error).message,
-      "Can't retrieve any favourite Pokemon",
-      404
+      cantRetrieveFavourite,
+      code404
     );
     next(mongooseError);
   }
@@ -57,8 +61,8 @@ export const deleteOneFavourite = async (
   } catch (error: unknown) {
     const customError = new CustomError(
       (error as Error).message,
-      "Error deleting Pokemon",
-      500
+      errorDeletingFavourite,
+      code500
     );
     next(customError);
   }
