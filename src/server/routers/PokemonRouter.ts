@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 import express from "express";
-import { getAllPokemon } from "../controllers/pokemonControllers/pokemonControllers";
-import routes from "./routes";
+import { getAllPokemon } from "../controllers/pokemonControllers/pokemonControllers.js";
+import routes from "./routes.js";
 
 const { list } = routes;
 
