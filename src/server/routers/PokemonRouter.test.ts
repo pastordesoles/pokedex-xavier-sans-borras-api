@@ -94,3 +94,33 @@ describe("Given a DELETE /pokemon/delete/:id endpoint", () => {
     });
   });
 });
+
+describe("Given a POST /pokemon/add endpoint", () => {
+  describe("When it receives a request with a valid Pokemon", () => {
+    test("Then it should call the response method status with a 201", async () => {
+      const expectedStatus = 201;
+
+      const favourite = getRandomFavourite();
+
+      await request(app)
+        .post(`/pokemon/add`)
+        .send(favourite)
+        .expect(expectedStatus);
+    });
+  });
+
+  describe("When it receives a request with an invalid Pokemon", () => {
+    test("Then it should call the response method status with a 500 and an error", async () => {
+      const expectedStatus = 400;
+      const favourite = getRandomFavourite();
+      await Favourite.create(favourite);
+
+      const response = await request(app)
+        .post(`/pokemon/add`)
+        .send(favourite)
+        .expect(expectedStatus);
+
+      expect(response.body).toHaveProperty("message");
+    });
+  });
+});
