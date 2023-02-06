@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=bugs)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api) [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=pastordesoles_pokedex-xavier-sans-borras-api&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=pastordesoles_pokedex-xavier-sans-borras-api)
+
 # Pokedex API
 
 > API for the Pokedex.
@@ -10,8 +12,6 @@
 - [Setup](#setup)
 - [Endpoints](#endpoints)
 - [Project Status](#project-status)
-- [Room for Improvement](#room-for-improvement)
-- [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
 ## General Information
@@ -29,14 +29,14 @@ API rest that manages all favourite Pokemon.
 - Cors
 - Debug
 - Dotenv
-- Express-validation
+- Faker-js
 - Fishery
-- Joi
 - Mongoose
 - Morgan
 - Nodemon
 - Jest
 - Supertest
+- Mongo Memory Server
 
 ## Setup
 
@@ -49,13 +49,13 @@ The command _npm run start:dev_ starts the server in watch mode.
 
 ## Endpoints
 
+- (GET) /pokemon/list -> Retrieves a list of available favourite Pokemon. Body -> Its body must return a list of Pokemon.
+- (POST) /pokemon/add -> Add a favourite Pokemon. Its body must return an object with a valid Pokemon.
+- (DELETE) /pokemon/delete/:id -> Delete a favourite Pokemon. Body -> Its body must return an object with a delete confirmation message.
+
 ## Project Status
 
 Project is: _in progress_
-
-## Room for Improvement
-
-To do:
 
 ## Contact
 
