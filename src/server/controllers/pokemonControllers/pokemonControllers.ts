@@ -10,7 +10,7 @@ export const getAllPokemon = async (
   next: NextFunction
 ) => {
   try {
-    const pokemon = await Favourite.find();
+    const pokemon = await Favourite.find().exec();
     res.status(200).json({ pokemon });
   } catch (error: unknown) {
     const mongooseError = new CustomError(
