@@ -34,6 +34,12 @@ export const addOneFavourite = async (
   const receivedFavourite = req.body as FavouriteStructure;
 
   try {
+    const doc = await Favourite.findOne(receivedFavourite);
+    if (doc) {
+      res.status(400).json({ message: "Pokemon already present in the list" });
+      return;
+    }
+
     const newFavourite = await Favourite.create({
       ...receivedFavourite,
     });
