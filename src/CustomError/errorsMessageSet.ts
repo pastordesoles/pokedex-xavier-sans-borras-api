@@ -7,6 +7,9 @@ const errorsMessageSet = {
     404
   ),
 
+  cantRetrieveFavourite: "Can't retrieve any favourite Pokemon",
+  errorDeletingFavourite: "Error deleting Pokemon",
+
   code404: 404,
   code401: 401,
   code500: 500,
