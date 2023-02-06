@@ -1,7 +1,7 @@
 import type { NextFunction, Response } from "express";
 import CustomError from "../../../CustomError/CustomError.js";
 import type { CustomRequest } from "./types";
-
+import type { FavouriteStructure } from "../../../database/models/Favourites.js";
 import { Favourite } from "../../../database/models/Favourites.js";
 
 export const getAllPokemon = async (
@@ -19,5 +19,47 @@ export const getAllPokemon = async (
       404
     );
     next(mongooseError);
+  }
+};
+
+export const addOneFavourite = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const receivedFavourite = req.body as FavouriteStructure;
+
+  try {
+    const newFavourite = await Favourite.create({
+      ...receivedFavourite,
+    });
+
+    res.status(201).json({
+      session: {
+        ...newFavourite.toJSON(),
+      },
+    });
+  } catch (error: unknown) {
+    next(error);
+  }
+};
+
+export const deleteOneFavourite = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+
+  try {
+    await Favourite.findByIdAndDelete(id).exec();
+    res.status(200).json({ message: "Pokemon has been deleted" });
+  } catch (error: unknown) {
+    const customError = new CustomError(
+      (error as Error).message,
+      "Error deleting Pokemon",
+      500
+    );
+    next(customError);
   }
 };
