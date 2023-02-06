@@ -1,0 +1,106 @@
+{
+  "info": {
+    "_postman_id": "17786f4a-43c7-480d-8ee1-5f9653ed8156",
+    "name": "Immfly-Poketest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23871435"
+  },
+  "item": [
+    {
+      "name": "Pokemon list",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://pokeapi.co/api/v2/pokemon/?limit=151",
+          "protocol": "https",
+          "host": ["pokeapi", "co"],
+          "path": ["api", "v2", "pokemon", ""],
+          "query": [
+            {
+              "key": "limit",
+              "value": "151"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get favourites",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{LocalOrigin}}/pokemon/list",
+          "host": ["{{LocalOrigin}}"],
+          "path": ["pokemon", "list"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Favourite",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n            \"abilities\": {\r\n                \"abilityOne\": \"fire\",\r\n                \"abilityTwo\": \"fire\"\r\n            },\r\n            \"height\": 7,\r\n            \"id\": 2,\r\n            \"types\": \"Plant\",\r\n            \"name\": \"pokechu\",\r\n            \"image\": \"aaa\"\r\n        }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{LocalOrigin}}/pokemon/add",
+          "host": ["{{LocalOrigin}}"],
+          "path": ["pokemon", "add"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{LocalOrigin}}/pokemon/delete/63e146fec76b352b836f2545",
+          "host": ["{{LocalOrigin}}"],
+          "path": ["pokemon", "delete", "63e146fec76b352b836f2545"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "LocalOrigin",
+      "value": "http://localhost:4000",
+      "type": "string"
+    },
+    {
+      "key": "ProductionOrigin",
+      "value": "https://pokedex-api-xavier-sans-borras.onrender.com",
+      "type": "string"
+    }
+  ]
+}

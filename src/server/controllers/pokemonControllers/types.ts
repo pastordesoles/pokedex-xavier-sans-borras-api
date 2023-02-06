@@ -10,6 +10,6 @@ export interface CustomRequest<
   userId: string;
 }
 
-export interface SessionStructureWithId extends FavouriteStructure {
+export interface FavouriteStructureWithId extends FavouriteStructure {
   _id: string;
 }
