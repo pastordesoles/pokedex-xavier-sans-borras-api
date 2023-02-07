@@ -7,7 +7,6 @@ const favouriteSchema = new Schema({
     abilityTwo: { type: String },
   },
   height: { type: Number, required: true },
-  id: { type: Number, required: true },
   types: { type: String, required: true },
   name: { type: String, required: true },
   image: { type: String, required: true },
