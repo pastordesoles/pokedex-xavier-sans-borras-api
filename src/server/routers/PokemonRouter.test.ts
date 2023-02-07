@@ -109,8 +109,8 @@ describe("Given a POST /pokemon/add endpoint", () => {
     });
   });
 
-  describe("When it receives a request with an invalid Pokemon", () => {
-    test("Then it should call the response method status with a 500 and an error", async () => {
+  describe("When it receives a request with a duplicated Pokemon", () => {
+    test("Then it should call the response method status with a 400 and an error", async () => {
       const expectedStatus = 400;
       const favourite = getRandomFavourite();
       await Favourite.create(favourite);
@@ -121,6 +121,19 @@ describe("Given a POST /pokemon/add endpoint", () => {
         .expect(expectedStatus);
 
       expect(response.body).toHaveProperty("message");
+    });
+  });
+
+  describe("When it receives an invalid request", () => {
+    test("Then it should call the response method status with a 500 and an error", async () => {
+      const expectedStatus = 500;
+
+      const response = await request(app)
+        .post(`/pokemon/add`)
+        .send("")
+        .expect(expectedStatus);
+
+      expect(response.body).toHaveProperty("error");
     });
   });
 });
